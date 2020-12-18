@@ -1,0 +1,52 @@
+mat-toolbar {
+  background: #212529;
+  font-family: "Gotham-bold", sans-serif;
+  /* faz ficar no topo da pagina: */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.image-responsive {
+  height: auto;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.new-client-button {
+  color: #aeea0a;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.menu-button {
+  background-color: #aeea0a;
+}
+
+::ng-deep .menu-options {
+  background: #2f3031;
+}
+
+@media screen and (max-width: 600px) {
+  .large-screen-options {
+    display: none;
+  }
+  .image-responsive {
+    max-width: 25%;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  .small-screen-options {
+    display: none;
+  }
+  .image-responsive {
+    max-width: 15%;
+  }
+}
+
+
+

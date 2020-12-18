@@ -1,0 +1,18 @@
+<mat-toolbar>
+  <img class="image-responsive" src="/assets/img/helpper-logo.png" alt="Nature">
+  <span class="spacer"></span>
+  <div class="large-screen-options">
+    <button mat-button class="new-client-button" [routerLink]="'/new-client'">
+      <span>Novo Cliente</span>
+    </button>
+  </div>
+  <div class="small-screen-options">
+    <button mat-button class="menu-button" [matMenuTriggerFor]="menuOptions">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu class="menu-options" #menuOptions="matMenu">
+      <button mat-menu-item class="new-client-button" [routerLink]="'/new-client'">Novo Cliente</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>
