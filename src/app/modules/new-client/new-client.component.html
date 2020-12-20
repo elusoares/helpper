@@ -58,7 +58,7 @@
 
       <mat-form-field class="field-logradouro" appearance="outline">
         <mat-label>Logradouro</mat-label>
-        <input matInput type="text" formControlName="logradouro" mask="00000-000">
+        <input matInput type="text" formControlName="logradouro">
         <mat-error *ngIf="newClientForm.controls.logradouro.hasError('required')">
           Este campo é obrigatório.
         </mat-error>

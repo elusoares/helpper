@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CustomFormValidatorService } from 'src/app/core/services/custom-form-validator.service';
+import { FakeBackendService } from 'src/app/core/services/fake-backend.service';
+import { ClientModel } from './client-model';
 
 @Component({
   selector: 'app-new-client',
@@ -13,7 +16,8 @@ export class NewClientComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private customFormValidatorService: CustomFormValidatorService,
-
+    private fakeBackendService: FakeBackendService,
+    private router: Router
   ) {
     this.newClientForm = this.formBuilder.group({
       nome: new FormControl('', Validators.required),
@@ -36,6 +40,27 @@ export class NewClientComponent implements OnInit {
   }
 
   saveClient() {
+    if (this.newClientForm.valid) {
+      const newClient: ClientModel = new ClientModel(
+        this.newClientForm.get('nome').value,
+        this.newClientForm.get('email').value,
+        this.newClientForm.get('cpfOuCnpj').value,
+        this.newClientForm.get('telefone').value,
+        this.newClientForm.get('cep').value,
+        this.newClientForm.get('logradouro').value,
+        this.newClientForm.get('numero').value,
+        this.newClientForm.get('bairro').value,
+        this.newClientForm.get('cidade').value,
+        this.newClientForm.get('estado').value
+      );
+      this.fakeBackendService.newClient(newClient).subscribe((res) => {
+        this.router.navigateByUrl('/clients');
+      },
+      (error) => {
+        console.log(error);
+      }
+      );
+    }
     this.getFormValidationErrors();
 
   }

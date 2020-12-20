@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModulesModule } from './modules/modules.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FakeBackendInterceptor } from './core/interceptors/fake-backend.interceptor';
 
 @NgModule({
   declarations: [
@@ -12,11 +14,14 @@ import { ModulesModule } from './modules/modules.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ModulesModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: FakeBackendInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
