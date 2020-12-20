@@ -1,0 +1,107 @@
+.container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.form-title {
+
+  font-family: 'Gotham-bold';
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  color: #212529;
+}
+
+.save-button {
+  width: 100%;
+  font-family: Gotham-bold;
+  background-color: #aeea0a;
+}
+
+@media screen and (max-width: 490px) {
+  form {
+    width: 85%;
+  }
+}
+@media screen and (min-width: 491px) {
+  form {
+    width: 50%;
+  }
+
+}
+
+@media screen and (max-width: 650px) {
+
+  mat-form-field {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+@media screen and (min-width: 651px) {
+
+  form {
+    width: 50%;
+  }
+
+  .form-title {
+    font-size: 32px;
+  }
+
+  ::ng-deep .mat-form-field {
+    font-family: 'Gotham-book' !important;
+  }
+
+  ::ng-deep .field-cpfOuCnpj .mat-form-field-wrapper,
+  ::ng-deep .field-numero .mat-form-field-wrapper,
+  ::ng-deep .field-cidade .mat-form-field-wrapper {
+    padding-right: 0.6em;
+  }
+
+  ::ng-deep .field-telefone .mat-form-field-wrapper,
+  ::ng-deep .field-bairro .mat-form-field-wrapper,
+  ::ng-deep .field-estado .mat-form-field-wrapper {
+    padding-left: 0.6em;
+  }
+
+  .field-cep,
+  .field-numero,
+  .field-bairro,
+  .field-cidade,
+  .field-estado,
+  .field-cpfOuCnpj,
+  .field-telefone{
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .field-nome, .field-email, .field-logradouro{
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .field-cep, .field-numero, .field-estado {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+  .field-cpfOuCnpj, .field-telefone{
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .field-bairro, .field-cidade {
+    flex: 0 0 75%;
+    max-width: 75%;
+  }
+
+}

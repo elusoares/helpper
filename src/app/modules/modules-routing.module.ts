@@ -6,7 +6,22 @@ import { RootComponent } from './root/root.component';
 const routes: Routes = [
   {
     path: '',
-    component: RootComponent
+    redirectTo: '/clients',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
+    component: RootComponent,
+    children: [
+      {
+        path: 'clients',
+        loadChildren: () => import ('./clients/clients.module').then( m => m.ClientsModule)
+      },
+      {
+        path: 'new-client',
+        loadChildren: () => import ('./new-client/new-client.module').then( m => m.NewClientModule)
+      }
+    ]
   }
 ];
 

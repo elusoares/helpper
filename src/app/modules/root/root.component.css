@@ -44,7 +44,7 @@ mat-toolbar {
     display: none;
   }
   .image-responsive {
-    max-width: 15%;
+    max-width: 10%;
   }
 }
 
