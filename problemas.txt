@@ -1,0 +1,17 @@
+-- helpper
+gotham font: deixar somente os arquivos que vou usar
+root routing module: precisa dele?
+
+new client espaçamento e posicao: ver se o material design nao tem classes para isso
+
+
+-- elogroup
+logo em root: verificar se a parte responsiva ta funcionando corretamente
+
+media screen em root: min-width 600 e max-width 601 nao faz sentido
+root routing module: precisa dele?
+
+mat-form-field input: alguns nao tem type
+
+new-lead mat-form-field telefone ta com os erros de nome
+new-lead button nao ta no formato do material design
