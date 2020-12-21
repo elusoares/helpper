@@ -1,0 +1,42 @@
+<div class="container mat-elevation-z8">
+  <div class="table-options" *ngIf="selection.hasValue()">
+    <span class="item-selecionado">{{selection.selected.length}} item selecionado(s)</span>
+    <span class="spacer"></span>
+    <button mat-icon-button class="delete-button" (click)="deleteClients()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+  <mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()"
+                      [aria-label]="checkboxLabel()">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)"
+                      [aria-label]="checkboxLabel(row)">
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+   <ng-container *ngFor="let col of displayedColumns | slice: 1; let i = index" [matColumnDef]="col">
+     <mat-header-cell *matHeaderCellDef> {{displayedColumnsNames[i]}} </mat-header-cell>
+     <mat-cell *matCellDef="let element">
+        <span class="mobile-label">{{displayedColumnsNames[i]}}</span>
+       {{element[col]}}
+      </mat-cell>
+
+   </ng-container>
+
+   <mat-header-row mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+   <mat-row mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+ </mat-table>
+</div>
+
+

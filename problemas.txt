@@ -15,3 +15,8 @@ mat-form-field input: alguns nao tem type
 
 new-lead mat-form-field telefone ta com os erros de nome
 new-lead button nao ta no formato do material design
+ 
+mask: mensagem de erro quando nao valida
+
+32 27 05 33 08 13 53 54 16 11 10 30 22 56 43 25 37 14 57 
+23 31 26 36 50 34 06 39 09 15 19 01 12 46 42 45 28 20 55
