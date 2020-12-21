@@ -63,6 +63,18 @@ export class ClientsComponent implements OnInit, AfterViewInit  {
 
   deleteClients() {
     console.log(this.selection.selected);
+    this.dataSource.data = this.dataSource.data.filter(client => {
+      for (const selected of this.selection.selected) {
+        return client !== selected;
+      }
+    });
+    this.selection.clear();
+    this.fakeBackendService.updateClients(this.dataSource.data).subscribe((res) => {
+
+    },
+    (error) => {
+      console.log(error);
+    });
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
