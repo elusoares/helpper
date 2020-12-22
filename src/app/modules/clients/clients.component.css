@@ -28,7 +28,8 @@
 }
 
 .mat-header-cell {
-  color: #aeea0a
+  color: #aeea0a;
+  font-weight: bold;
 }
 
 ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
@@ -49,9 +50,9 @@
   background: #aeea0a;
   color: white;
   border: 0px;
-  border-bottom-width: 1px;
   border-style: solid;
   border-bottom-color: rgba(0,0,0,.12);
+  border-bottom-width: 1px;
   padding: 10px;
 }
 
@@ -67,35 +68,49 @@
   padding-right: 24px;
 }
 
+.table-title {
+  font-family: 'Gotham-bold';
+  text-transform: uppercase;
+  text-align: center;
+  color: #212529;
+}
+
 @media(max-width: 755px) {
-  mat-cell:first-child {
-    padding-left: 0;
-  }
-  mat-cell:last-child {
-    padding-right: 0;
-  }
-
-  mat-cell {
-    min-height: initial;
-    padding: 3px;
-    width: 100%;
-    align-items: flex-start;
-  }
-
-  .mobile-label {
-    width: 90px;
-    display: inline-block;
-    font-family: 'Gotham-bold';
-    color: #aeea0a;
+  /* reverse table direction */
+  .mat-table {
+    display: flex;
+    flex-direction: row;
+    white-space: nowrap;
+    height: 500px;
+    border: 0px;
+    border-top-width: 1px;
+    border-style: solid;
+    border-top-color: rgba(0,0,0,.12);
   }
 
   .mat-header-row {
-    display: none;
+    position: sticky;
+    left: 0;
   }
 
-  .mat-row {
+  .mat-header-row, .mat-row {
     flex-direction: column;
-    padding: 8px 24px;
+    border: 0px;
+    border-right-width: 1px;
+    border-style: solid;
+    border-right-color: rgba(0,0,0,.12);
     min-height: initial;
   }
+
+  mat-row:last-child {
+    border: 0px;
+  }
+
+}
+
+@media(min-width: 756px) {
+  .table-title {
+    font-size: 32px;
+  }
+
 }

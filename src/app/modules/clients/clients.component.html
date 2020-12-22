@@ -1,4 +1,8 @@
-<div class="container mat-elevation-z8">
+<div class="container">
+  <h2 class="table-title">
+    <!-- <span>Clientes</span> -->
+    Clientes
+  </h2>
   <div class="table-options" *ngIf="selection.hasValue()">
     <span class="item-selecionado">{{selection.selected.length}} item selecionado(s)</span>
     <span class="spacer"></span>
@@ -34,7 +38,7 @@
 
    </ng-container>
 
-   <mat-header-row mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+   <mat-header-row mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
    <mat-row mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
  </mat-table>
 </div>

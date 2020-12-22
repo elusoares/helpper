@@ -1,5 +1,7 @@
 <mat-toolbar>
-  <img class="image-responsive" src="/assets/img/helpper-logo.png" alt="Nature">
+  <a [routerLink]="'/clients'">
+    <img class="image-responsive" src="/assets/img/helpper-logo.png" alt="Nature">
+  </a>
   <span class="spacer"></span>
   <div class="large-screen-options">
     <button mat-button class="new-client-button" [routerLink]="'/new-client'">
