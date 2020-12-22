@@ -1,9 +1,10 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { delay } from 'rxjs/operators';
 
 import { FakeBackendService } from 'src/app/core/services/fake-backend.service';
+import { SnackbarService } from 'src/app/core/services/snackbar.service';
 import { ClientModel } from '../new-client/client-model';
 
 
@@ -12,7 +13,7 @@ import { ClientModel } from '../new-client/client-model';
   templateUrl: './clients.component.html',
   styleUrls: ['./clients.component.css']
 })
-export class ClientsComponent implements OnInit, AfterViewInit  {
+export class ClientsComponent implements OnInit  {
   displayedColumns: string[] = [
     'select',
     'nome',
@@ -42,16 +43,13 @@ export class ClientsComponent implements OnInit, AfterViewInit  {
   selection = new SelectionModel<ClientModel>(true, []);
   constructor(
     private fakeBackendService: FakeBackendService,
+    private snackBarService: SnackbarService
   ) {
   }
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource();
     this.getClients();
-  }
-
-  ngAfterViewInit() {
-    // this.getData();
   }
 
   getClients() {
@@ -70,7 +68,7 @@ export class ClientsComponent implements OnInit, AfterViewInit  {
     });
     this.selection.clear();
     this.fakeBackendService.updateClients(this.dataSource.data).subscribe((res) => {
-
+      this.snackBarService.openSnackBar('O cliente foi excluído', '');
     },
     (error) => {
       console.log(error);

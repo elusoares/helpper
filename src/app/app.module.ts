@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ModulesModule } from './modules/modules.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FakeBackendInterceptor } from './core/interceptors/fake-backend.interceptor';
 
 @NgModule({
@@ -17,6 +19,7 @@ import { FakeBackendInterceptor } from './core/interceptors/fake-backend.interce
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatSnackBarModule,
     ModulesModule
   ],
   providers: [

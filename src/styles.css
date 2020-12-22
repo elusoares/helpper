@@ -12,3 +12,8 @@
 
 html, body { max-height: 100%; }
 body { margin: 0; font-family: Gotham-book, "Helvetica Neue", sans-serif; }
+
+.green-snackbar {
+  background: #4caf50;
+  color: white;
+}

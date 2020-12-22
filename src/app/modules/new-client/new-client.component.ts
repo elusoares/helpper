@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } fro
 import { Router } from '@angular/router';
 import { CustomFormValidatorService } from 'src/app/core/services/custom-form-validator.service';
 import { FakeBackendService } from 'src/app/core/services/fake-backend.service';
+import { SnackbarService } from 'src/app/core/services/snackbar.service';
 import { ClientModel } from './client-model';
 
 @Component({
@@ -17,6 +18,7 @@ export class NewClientComponent implements OnInit {
     private formBuilder: FormBuilder,
     private customFormValidatorService: CustomFormValidatorService,
     private fakeBackendService: FakeBackendService,
+    private snackBarService: SnackbarService,
     private router: Router
   ) {
     this.newClientForm = this.formBuilder.group({
@@ -54,6 +56,7 @@ export class NewClientComponent implements OnInit {
         this.newClientForm.get('estado').value
       );
       this.fakeBackendService.newClient(newClient).subscribe((res) => {
+        this.snackBarService.openSnackBar('Um novo cliente foi adicionado', '');
         this.router.navigateByUrl('/clients');
       },
       (error) => {
@@ -61,18 +64,5 @@ export class NewClientComponent implements OnInit {
       }
       );
     }
-    this.getFormValidationErrors();
-
   }
-  getFormValidationErrors() {
-    Object.keys(this.newClientForm.controls).forEach(key => {
-
-    const controlErrors: ValidationErrors = this.newClientForm.get(key).errors;
-    if (controlErrors != null) {
-          Object.keys(controlErrors).forEach(keyError => {
-            console.log('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
-          });
-        }
-      });
-    }
 }
